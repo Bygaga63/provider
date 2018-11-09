@@ -1,9 +1,7 @@
 package com.job.dynamicproviders;
 
-import com.job.dynamicproviders.model.DynamicProvider;
-import com.job.dynamicproviders.model.ProviderAttribute;
-import com.job.dynamicproviders.model.ProviderType;
-import com.job.dynamicproviders.model.ProviderTypeTemplate;
+import com.job.dynamicproviders.model.providers.ProviderType;
+import com.job.dynamicproviders.model.providers.ProviderTypeTemplate;
 import com.job.dynamicproviders.repository.DynamicProviderRepository;
 import com.job.dynamicproviders.repository.ProviderTypeTemplateRepository;
 import com.job.dynamicproviders.service.DynamicProviderService;
@@ -28,11 +26,11 @@ public class DynamicprovidersApplication implements CommandLineRunner{
 	@Override
 	public void run(String... args) throws Exception {
 		//create dynamic provider
-		DynamicProvider provider = new DynamicProvider("CustomType");
-		//create provider attributes
-		ProviderAttribute providerAttribute = new ProviderAttribute("cleintId", "1234", provider);
-		provider.getProviderAttributes().add(providerAttribute);
-		providerRepository.save(provider);
+//		DynamicProvider provider = new DynamicProvider("CustomType");
+//		//create provider attributes
+//		ProviderAttribute providerAttribute = new ProviderAttribute("cleintId", "1234", provider);
+//		provider.getProviderAttributes().add(providerAttribute);
+//		providerRepository.save(provider);
 
 
 		//create providerTypeTemplate

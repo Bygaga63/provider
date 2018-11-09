@@ -1,9 +1,8 @@
 package com.job.dynamicproviders.service;
 
-import com.job.dynamicproviders.model.DynamicProvider;
-import com.job.dynamicproviders.model.ProviderAttribute;
-import com.job.dynamicproviders.model.ProviderType;
-import com.job.dynamicproviders.model.ProviderTypeTemplate;
+import com.job.dynamicproviders.model.providers.DynamicProvider;
+import com.job.dynamicproviders.model.providers.ProviderType;
+import com.job.dynamicproviders.model.providers.ProviderTypeTemplate;
 import com.job.dynamicproviders.repository.DynamicProviderRepository;
 import com.job.dynamicproviders.repository.ProviderTypeTemplateRepository;
 import lombok.AllArgsConstructor;
@@ -19,12 +18,13 @@ public class DynamicProviderService {
 
     public DynamicProvider createByTemplate(ProviderType providerType){
         ProviderTypeTemplate template = typeTemplateRepository.findByType(providerType);
-        DynamicProvider dynamicProvider = new DynamicProvider(providerType.name());
+        DynamicProvider dynamicProvider = new DynamicProvider(providerType);
         template.getPropertyName()
                 .forEach(propName -> {
-                    ProviderAttribute providerAttribute = new ProviderAttribute(propName, null, dynamicProvider);
-                    dynamicProvider.getProviderAttributes().add(providerAttribute);
+//                    ProviderAttribute providerAttribute = new ProviderAttribute(propName, null, dynamicProvider);
+//                    dynamicProvider.getProviderAttributes().add(providerAttribute);
                 });
+        providerRepository.save(dynamicProvider);
         return dynamicProvider;
     }
 

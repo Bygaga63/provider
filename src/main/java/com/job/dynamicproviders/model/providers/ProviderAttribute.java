@@ -1,6 +1,7 @@
-package com.job.dynamicproviders.model;
+package com.job.dynamicproviders.model.providers;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.job.dynamicproviders.model.AbstractBaseEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,12 +14,8 @@ import javax.persistence.ManyToOne;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ProviderAttribute extends AbstractBaseEntity{
+public class ProviderAttribute extends AbstractBaseEntity {
 
     private String type;
     private String value;
-    @ManyToOne
-    @JoinColumn(name = "provider_id")
-    @JsonBackReference
-    private DynamicProvider dynamicProviders;
 }
