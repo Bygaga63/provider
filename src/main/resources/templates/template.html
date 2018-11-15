@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:replace="fragments/header :: header">...</div>
+
+<h3 th:text="${template.getType()}">Создайте провайдера</h3>
+<form action="/" th:method="POST">
+    <div th:each="name: ${template.getPropertyName()}">
+        <div style="display: flex; justify-content: left; width: 30%">
+
+            <div th:text="${name}" style="width: 50%"></div>
+            <div style="width: 50%">
+                <!--<input th:field="*{name}" type="text">-->
+            </div>
+        </div>
+    </div>
+
+    <input style="margin-left: 300px; margin-top: 30px" type="submit" value="PushMe">
+</form>
+
+
+
+<div th:replace="fragments/footer :: footer">...</div>
+</body>
+</html>

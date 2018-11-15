@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:replace="fragments/header :: header">...</div>
+
+<h3>Выберите тип создаваемого провайдера</h3>
+
+<ul th:each="type : ${providerTypes}">
+    <li>
+        <a th:text="${type}" th:href="${type}"></a>
+    </li>
+</ul>
+
+
+<div th:replace="fragments/footer :: footer">...</div>
+</body>
+</html>

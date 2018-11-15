@@ -5,6 +5,7 @@ import com.job.dynamicproviders.model.AbstractBaseEntity;
 import com.job.dynamicproviders.model.JpaApplication;
 import com.job.dynamicproviders.model.JpaUser;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -16,6 +17,7 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 //@ToString(exclude = "providerAttributes")
 public class DynamicProvider extends AbstractBaseEntity {
 

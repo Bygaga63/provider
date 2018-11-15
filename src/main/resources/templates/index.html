@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:replace="fragments/header :: header">...</div>
+<h3>Динамические провайдеры</h3>
+
+<a href="/templates/types">Выбрать из шаблона?</a> <br>
+
+<a href="/groups">groups</a> <br>
+<a href="/app">app</a> <br>
+<a href="/provider">provider</a> <br>
+<div th:replace="fragments/footer :: footer">...</div>
+</body>
+</html>
