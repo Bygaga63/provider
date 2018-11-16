@@ -65,7 +65,12 @@ public class DynamicprovidersApplication implements CommandLineRunner{
 		openIdTemplate.getPropertyName().add("client_secret");
 		providerTypeTemplateRepository.save(openIdTemplate);
 
-
+		ProviderTypeTemplate samlTemplate = new ProviderTypeTemplate(ProviderType.SAML);
+		samlTemplate.getPropertyName().add("userAuthorizationUri");
+		samlTemplate.getPropertyName().add("redirectUri");
+		samlTemplate.getPropertyName().add("clientId");
+		samlTemplate.getPropertyName().add("client_secret");
+		providerTypeTemplateRepository.save(samlTemplate);
 //		System.out.println(providerTypeTemplateRepository.findByType(ProviderType.OPENID));
 	}
 }

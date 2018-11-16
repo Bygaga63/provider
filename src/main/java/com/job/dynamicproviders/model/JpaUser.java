@@ -4,8 +4,10 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.job.dynamicproviders.interfaces.Person;
 import com.job.dynamicproviders.interfaces.User;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -15,6 +17,8 @@ import java.util.Date;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @Data
 @Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class JpaUser extends JpaAbstractUser  {
 
     public static final String GET_BY_EMAIL = "q.user.getbyemail";

@@ -7,6 +7,7 @@
 <body>
 <div th:replace="fragments/header :: header">...</div>
 
+<input onclick='javascript:window.history.back()' value='Back' type='button' />
 <h3>Выберите тип создаваемого провайдера</h3>
 
 <ul th:each="type : ${providerTypes}">

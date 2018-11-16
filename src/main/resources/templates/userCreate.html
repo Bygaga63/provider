@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:replace="fragments/header :: header">...</div>
+<input onclick='javascript:window.history.back()' value='Back' type='button'/>
+<h3 style="text-align: center; width: 30%"> Создание пользвателя</h3>
+
+<form action="#" th:action="@{/user}" th:object="${user}" method="POST">
+
+    <div style="display: flex; justify-content: left; width: 30%">
+
+        <div style="width: 50%">username</div>
+        <div style="width: 50%">
+            <input th:field="*{username}" type="text"/></div>
+    </div>
+
+    <div style="display: flex; justify-content: left; width: 30%">
+        <div style="width: 50%">email</div>
+        <div style="width: 50%">
+            <input th:field="*{email}" type="text"/></div>
+    </div>
+
+    <div style="display: flex; justify-content: left; width: 30%">
+    <div style="width: 50%">familyName</div>
+    <div style="width: 50%">
+        <input th:field="*{familyName}" type="text"/></div>
+    </div>
+
+    <div style="display: flex; justify-content: left; width: 30%">
+    <div style="width: 50%">password</div>
+    <div style="width: 50%">
+        <input th:field="*{password}" type="text"/></div>
+    </div>
+
+
+    <input style="margin-left: 300px; margin-top: 30px" type="submit" value="Create">
+</form>
+
+<div th:replace="fragments/footer :: footer">...</div>
+</body>
+</html>

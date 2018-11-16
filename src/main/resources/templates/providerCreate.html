@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+<div th:replace="fragments/header :: header">...</div>
+
+<input onclick='javascript:window.history.back()' value='Back' type='button' />
+
+<h3 th:text="'Создайте провайдера ' + ${template.type}" style="text-align: center; width: 30%"></h3>
+
+
+<form action="#" th:action="@{'/templates/' + ${template.type}}" method="POST">
+
+    <div th:each="name: ${template.propertyName}">
+        <div style="display: flex; justify-content: left; width: 30%">
+
+            <div th:text="${name}" style="width: 50%"></div>
+            <div style="width: 50%">
+                <input
+                        th:name="${name}"
+                        type="text"
+                />
+            </div>
+        </div>
+    </div>
+
+    <input style="margin-left: 300px; margin-top: 30px" type="submit" value="Create">
+</form>
+
+
+
+
+<div th:replace="fragments/footer :: footer">...</div>
+</body>
+</html>

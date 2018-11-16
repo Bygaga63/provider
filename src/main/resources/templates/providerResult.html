@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:replace="fragments/header :: header">...</div>
+<input onclick='javascript:window.history.back()' value='Back' type='button' />
+<h3 style="text-align: center; width: 30%" th:text="'Созданные поля ' + ${type}"></h3>
+    <div th:each="attribute: ${attributes}">
+        <div style="display: flex; justify-content: space-around; width: 30%">
+
+            <div th:text="${attribute.type}" ></div>
+            <div th:text="${attribute.value}"></div>
+
+        </div>
+    </div>
+
+<div th:replace="fragments/footer :: footer">...</div>
+</body>
+</html>
