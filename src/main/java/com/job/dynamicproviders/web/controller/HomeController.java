@@ -45,10 +45,10 @@ public class HomeController {
     @GetMapping("/provider")
     @ResponseBody
     public List<Provider> createProviderByTemplate(){
-        Provider openId = providerService.createByTemplate(ProviderType.OPENID);
-        Provider oauth = providerService.createByTemplate(ProviderType.OAUTH2);
-        Provider ldap = providerService.createByTemplate(ProviderType.LDAP);
-        providerRepository.saveAll(Arrays.asList(openId,oauth, ldap));
+//        Provider openId = providerService.createByTemplate(ProviderType.OPENID);
+//        Provider oauth = providerService.createByTemplate(ProviderType.OAUTH2);
+//        Provider ldap = providerService.createByTemplate(ProviderType.LDAP);
+//        providerRepository.saveAll(Arrays.asList(openId,oauth, ldap));
         return providerRepository.findAll();
     }
 
@@ -59,12 +59,12 @@ public class HomeController {
         application.setType(1L);
         application.setClientId("123");
 
-        Provider openId = providerService.createByTemplate(ProviderType.OPENID);
-        Provider oauth = providerService.createByTemplate(ProviderType.OAUTH2);
-        Provider ldap = providerService.createByTemplate(ProviderType.LDAP);
-        oauth.setApplication(application);
-        openId.setApplication(application);
-        ldap.setApplication(application);
+//        Provider openId = providerService.createByTemplate(ProviderType.OPENID);
+//        Provider oauth = providerService.createByTemplate(ProviderType.OAUTH2);
+//        Provider ldap = providerService.createByTemplate(ProviderType.LDAP);
+//        oauth.setApplication(application);
+//        openId.setApplication(application);
+//        ldap.setApplication(application);
 //        application.setProviders((Arrays.asList(openId,oauth, ldap)));
         applicationRepository.save(application);
         return application;

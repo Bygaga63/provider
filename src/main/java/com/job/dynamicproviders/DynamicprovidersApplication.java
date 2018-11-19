@@ -42,8 +42,8 @@ public class DynamicprovidersApplication implements CommandLineRunner{
 		List<JpaUser> users = createUsers();
 		Application application = createApplications(users.get(0));
 
-		Provider provider1 =  Provider.builder().name("Provider1").type(ProviderType.OAUTH2).application((JpaApplication) application).user(users.get(0)).build();
-		Provider provider2 =  Provider.builder().name("Provider2").type(ProviderType.SAML).application((JpaApplication) application).user(users.get(0)).build();
+		Provider provider1 =  Provider.builder().name("Provider1").type(ProviderType.OAUTH2).application(application).user(users.get(0)).build();
+		Provider provider2 =  Provider.builder().name("Provider2").type(ProviderType.SAML).application(application).user(users.get(0)).build();
 		providerRepository.save(provider1);
 		providerRepository.save(provider2);
 

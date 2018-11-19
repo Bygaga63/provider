@@ -1,6 +1,8 @@
 package com.job.dynamicproviders.model.providers;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.job.dynamicproviders.interfaces.Application;
+import com.job.dynamicproviders.interfaces.User;
 import com.job.dynamicproviders.model.AbstractBaseEntity;
 import com.job.dynamicproviders.model.JpaApplication;
 import com.job.dynamicproviders.model.JpaUser;
@@ -21,21 +23,28 @@ import java.util.List;
 //@ToString(exclude = "attributes")
 public class Provider extends AbstractBaseEntity {
 
-    private ProviderType type;
+    @Column(nullable = false)
     private String name;
+
     private String description;
 
+    @Column(nullable = false)
+    private ProviderType type;
+
+    @Column(nullable = false)
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "provider_id")
     private List<ProviderAttribute> attributes = new ArrayList<>();
 
-    @ManyToOne
+    @ManyToOne(targetEntity = JpaApplication.class)
     @JoinColumn(name = "app_id")
-    private JpaApplication application;
+    @JsonIgnore
+    private Application application;
 
-    @ManyToOne
+    @ManyToOne(targetEntity = JpaUser.class)
     @JoinColumn(name = "owner_id")
-    private JpaUser user;
+    @JsonIgnore
+    private User user;
 
     public Provider(ProviderType type) {
         this.type = type;

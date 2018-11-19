@@ -1,25 +1,22 @@
 package com.job.dynamicproviders.web.request;
 
-import com.job.dynamicproviders.model.JpaApplication;
-import com.job.dynamicproviders.model.JpaUser;
-import com.job.dynamicproviders.model.providers.ProviderAttribute;
-import com.job.dynamicproviders.model.providers.ProviderType;
 import lombok.Data;
 
-import javax.persistence.CascadeType;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import java.util.ArrayList;
-import java.util.List;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import java.util.Map;
 
 @Data
 public class ProviderRequestModel {
+    @Pattern(regexp = "(?i)(SAML|OAUTH2|LDAP|OPENID|CUSTOM)", message = "Incorrect provider type")
     private String type;
+    @NotBlank(message = "Provider name is required")
     private String name;
     private String description;
     private Map<String, String> attributes;
+    @NotNull(message = "userId is required")
     private Long userId;
+    @NotNull (message = "appId is required")
     private Long appId;
 }
