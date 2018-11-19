@@ -10,7 +10,7 @@ import javax.persistence.*;
 @DiscriminatorValue("AbstractUser")
 public abstract class JpaAbstractUser implements User, JpaObject {
     @Id
-    @Column(name = "entity_id")
+    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected Long entityId;
 

@@ -6,7 +6,7 @@
 package com.job.dynamicproviders.interfaces;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.job.dynamicproviders.model.providers.DynamicProvider;
+import com.job.dynamicproviders.model.providers.Provider;
 
 import java.util.List;
 
@@ -50,7 +50,4 @@ public interface Application extends GroupOwner {
 
     void setType(Long type);
 
-    void setProviders(List<DynamicProvider> list);
-
-    List<DynamicProvider> getProviders();
 }

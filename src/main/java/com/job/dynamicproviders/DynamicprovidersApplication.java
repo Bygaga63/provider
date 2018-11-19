@@ -1,32 +1,35 @@
 package com.job.dynamicproviders;
 
+import com.job.dynamicproviders.interfaces.Application;
+import com.job.dynamicproviders.model.JpaApplication;
+import com.job.dynamicproviders.model.JpaUser;
+import com.job.dynamicproviders.model.providers.Provider;
 import com.job.dynamicproviders.model.providers.ProviderType;
 import com.job.dynamicproviders.model.providers.ProviderTypeTemplate;
-import com.job.dynamicproviders.repository.DynamicProviderRepository;
+import com.job.dynamicproviders.repository.ApplicationRepository;
+import com.job.dynamicproviders.repository.ProviderRepository;
 import com.job.dynamicproviders.repository.ProviderTypeTemplateRepository;
-import com.job.dynamicproviders.service.DynamicProviderService;
+import com.job.dynamicproviders.repository.UserRepository;
+import com.job.dynamicproviders.service.ProviderServiceImpl;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.thymeleaf.ThymeleafProperties;
-import org.springframework.context.annotation.Bean;
-import org.thymeleaf.templateresolver.FileTemplateResolver;
-import org.thymeleaf.templateresolver.ITemplateResolver;
+
+import java.util.Arrays;
+import java.util.List;
 
 @SpringBootApplication
 @Data
 @AllArgsConstructor
 public class DynamicprovidersApplication implements CommandLineRunner{
 
-	private final DynamicProviderRepository providerRepository;
+	private final ProviderRepository providerRepository;
 	private final ProviderTypeTemplateRepository providerTypeTemplateRepository;
-	private final DynamicProviderService providerService;
-
-
+	private final ProviderServiceImpl providerServiceImpl;
+	private final UserRepository userRepo;
+	private final ApplicationRepository applicationRepo;
 
 
 	public static void main(String[] args) {
@@ -35,13 +38,14 @@ public class DynamicprovidersApplication implements CommandLineRunner{
 
 	@Override
 	public void run(String... args) throws Exception {
-		//create dynamic provider
-//		DynamicProvider provider = new DynamicProvider("CustomType");
-//		//create provider attributes
-//		ProviderAttribute providerAttribute = new ProviderAttribute("cleintId", "1234", provider);
-//		provider.getProviderAttributes().add(providerAttribute);
-//		providerRepository.save(provider);
 
+		List<JpaUser> users = createUsers();
+		Application application = createApplications(users.get(0));
+
+		Provider provider1 =  Provider.builder().name("Provider1").type(ProviderType.OAUTH2).application((JpaApplication) application).user(users.get(0)).build();
+		Provider provider2 =  Provider.builder().name("Provider2").type(ProviderType.SAML).application((JpaApplication) application).user(users.get(0)).build();
+		providerRepository.save(provider1);
+		providerRepository.save(provider2);
 
 		//create providerTypeTemplate
 		ProviderTypeTemplate providerType = new ProviderTypeTemplate(ProviderType.LDAP);
@@ -72,5 +76,28 @@ public class DynamicprovidersApplication implements CommandLineRunner{
 		samlTemplate.getPropertyName().add("client_secret");
 		providerTypeTemplateRepository.save(samlTemplate);
 //		System.out.println(providerTypeTemplateRepository.findByType(ProviderType.OPENID));
+	}
+
+
+	private List<JpaUser> createUsers(){
+		JpaUser Dima = JpaUser.builder().username("Dima").build();
+		JpaUser Misha = JpaUser.builder().username("Misha").build();
+		JpaUser Vadim = JpaUser.builder().username("Vadim").build();
+		JpaUser Sasha = JpaUser.builder().username("Sasha").build();
+		JpaUser Lena = JpaUser.builder().username("Lena").build();
+		JpaUser Kola = JpaUser.builder().username("Kola").build();
+		JpaUser Arkasha = JpaUser.builder().username("Arkasha").build();
+
+		return userRepo.saveAll(Arrays.asList(Dima, Misha, Vadim, Sasha, Lena, Kola, Arkasha));
+
+	}
+
+
+	private Application createApplications(JpaUser user){
+		JpaApplication application = new JpaApplication();
+		application.setAppName("Bygaga63");
+		application.setClientId("1235678");
+		application.setUser(user);
+		return applicationRepo.save(application);
 	}
 }

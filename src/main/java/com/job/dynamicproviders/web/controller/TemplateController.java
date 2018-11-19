@@ -1,4 +1,4 @@
-package com.job.dynamicproviders.controller;
+package com.job.dynamicproviders.web.controller;
 
 import com.job.dynamicproviders.model.providers.ProviderAttribute;
 import com.job.dynamicproviders.model.providers.ProviderType;
@@ -37,7 +37,6 @@ public class TemplateController {
 
         model.addAttribute("template", template);
         return "providerCreate";
-
     }
 
     @PostMapping("/{type}")

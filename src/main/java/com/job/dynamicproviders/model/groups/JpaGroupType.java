@@ -3,12 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.job.dynamicproviders.model;
+package com.job.dynamicproviders.model.groups;
 
-import com.job.dynamicproviders.interfaces.GroupType;
 import com.job.dynamicproviders.interfaces.JpaObject;
-import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Builder;
 
 import javax.persistence.*;
 
@@ -18,12 +16,10 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "group_type")
-@Data
-@AllArgsConstructor
 public class JpaGroupType implements GroupType, JpaObject {
     
     @Id
-    @Column(name = "entity_id")
+    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected Long entityId;
     
@@ -38,14 +34,49 @@ public class JpaGroupType implements GroupType, JpaObject {
     
     public JpaGroupType() {
     }
-
+    
+    
+    
+    
     @Override
     public Long getId() {
-        return null;
+        return entityId;
     }
 
     @Override
     public void setId(Long id) {
-
+        this.entityId = id;
     }
+
+    
+    @Override
+    public Long getEntityId() {
+        return this.entityId;
+    }
+    
+    @Override
+    public void setEntityId(Long id) {
+        this.entityId = id;
+    }
+    
+    @Override
+    public String getName() {
+        return name;
+    }
+
+    @Override
+    public void setName(String name) {
+        this.name = name;
+    }
+    
+    @Override
+    public GroupTypeAccess getAccess() {
+        return this.access;
+    }
+    
+    @Override
+    public void setAccess(GroupTypeAccess v) {
+        this.access = v;
+    }
+    
 }

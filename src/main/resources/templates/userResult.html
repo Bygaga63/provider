@@ -9,24 +9,26 @@
 
 <input onclick='javascript:window.history.back()' value='Back' type='button'/>
 
-<div style="display: flex; margin: 10px; justify-content: space-around; width: 30%">
-    <div>username</div>
-    <div th:text="${user.username}"></div>
-</div>
+<div th:each="user: ${userList}">
+    <div style="display: flex; margin: 10px; justify-content: space-around; width: 30%">
+        <div>username</div>
+        <div th:text="${user.username}"></div>
+    </div>
 
-<div style="display: flex; margin: 10px; justify-content: space-around; width: 30%">
-    <div>email</div>
-    <div th:text="${user.email}"></div>
-</div>
+    <div style="display: flex; margin: 10px; justify-content: space-around; width: 30%">
+        <div>email</div>
+        <div th:text="${user.email}"></div>
+    </div>
 
-<div style="display: flex; margin: 10px; justify-content: space-around; width: 30%">
-    <div>familyName</div>
-    <div th:text="${user.familyName}"></div>
-</div>
+    <div style="display: flex; margin: 10px; justify-content: space-around; width: 30%">
+        <div>familyName</div>
+        <div th:text="${user.familyName}"></div>
+    </div>
 
-<div style="display: flex; margin: 10px; justify-content: space-around; width: 30%">
-    <div>password</div>
-    <div th:text="${user.password}"></div>
+    <div style="display: flex; margin: 10px; justify-content: space-around; width: 30%">
+        <div>password</div>
+        <div th:text="${user.password}"></div>
+    </div>
 </div>
 
 <div style="display: flex; margin: 10px; justify-content: space-around; width: 30%">

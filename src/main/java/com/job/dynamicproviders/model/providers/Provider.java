@@ -18,8 +18,8 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-//@ToString(exclude = "providerAttributes")
-public class DynamicProvider extends AbstractBaseEntity {
+//@ToString(exclude = "attributes")
+public class Provider extends AbstractBaseEntity {
 
     private ProviderType type;
     private String name;
@@ -27,17 +27,17 @@ public class DynamicProvider extends AbstractBaseEntity {
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "provider_id")
-    private List<ProviderAttribute> providerAttributes = new ArrayList<>();
+    private List<ProviderAttribute> attributes = new ArrayList<>();
 
     @ManyToOne
-    @JsonBackReference
+    @JoinColumn(name = "app_id")
     private JpaApplication application;
 
     @ManyToOne
     @JoinColumn(name = "owner_id")
-    private JpaUser ownerId;
+    private JpaUser user;
 
-    public DynamicProvider(ProviderType type) {
+    public Provider(ProviderType type) {
         this.type = type;
     }
 }

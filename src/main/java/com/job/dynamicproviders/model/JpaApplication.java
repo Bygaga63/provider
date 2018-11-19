@@ -2,7 +2,8 @@ package com.job.dynamicproviders.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.job.dynamicproviders.interfaces.Application;
-import com.job.dynamicproviders.model.providers.DynamicProvider;
+import com.job.dynamicproviders.model.groups.JpaGroupOwner;
+import com.job.dynamicproviders.model.providers.Provider;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -44,9 +45,9 @@ public class JpaApplication extends JpaGroupOwner implements Application {
     private Integer refreshTime =3600;
 
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "application")
-//    @JoinColumn(name = "application_id")
-    private List<DynamicProvider> providers;
+//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "application")
+////    @JoinColumn(name = "application_id")
+//    private List<Provider> providers;
 
     
     @Basic
